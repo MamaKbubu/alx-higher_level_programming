@@ -8,19 +8,13 @@ import sys
 
 if __name__ == "__main__":
     '''First line of code will connect to MySQLserver running on localhost on port 3306 '''
-    db = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1],
-                         passwd=sys.argv[2], db=sys.argv[3])
-    '''Second line of code will help you navigate on the database '''
-    cur = db.cursor
-    '''This line will help you to pin point what to execute'''
-    cur.execute("SELECT *FROM states ORDER by id ASC")
-    '''This function allows for all the information to be fetched and placed in rows'''
-    rows = cur.fetchall()
-    '''This line is a for loop that will run for rows'''
-    for rows in rows:
-        '''print the rows'''
-        print(rows)
-    '''close the cursor'''
-    cur.close()
-    '''close the db'''
-    db.close()
+    db_connect = MySQLdb.connect(host="localhost", port=3306, user=argv[1], passwd=argv[2], db=argv[3])
+    '''Second line of code will create a cursor object'''
+    db_cursor = db_connect.cursor()
+    '''Third line of code will execute a query'''  
+    db_cursor.execute("SELECT * FROM states ORDER BY id ASC")
+    '''Fourth line of code will fetch all rows from the last executed query'''
+    rows_select = db_cursor.fetchall()
+    '''Fifth line of code will print all rows'''
+    for row in rows_select:
+        print(row)
