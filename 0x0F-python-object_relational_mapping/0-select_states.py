@@ -2,7 +2,7 @@
 
 import MySQLdb
 from sys import argv
-import sys
+
 
 '''This code will get all states from the database hbtn_0e_0_usa'''
 
